@@ -2,7 +2,7 @@ NAME
     Bubblegum::Functions - Experimental Function Library for Bubblegum
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
         package Server;
@@ -25,29 +25,33 @@ DESCRIPTION
     a focus on minimalism and data integrity. Note: This is an early release
     available for testing and feedback and as such is subject to change.
 
-EXPORTS
     By default, no functions are exported when using this package, all
     functionality desired will need to be explicitly requested. The
     following are a list of functions available:
 
+FUNCTIONS
+  cwd
     The cwd function returns a Path::Tiny instance for operating on the
     current working directory.
 
         my $dir = cwd;
         my @more = $dir->children;
 
+  date
     The date function returns a DateTime::Tiny instance from an epoch or
     common date phrase, e.g. yesterday. The first argument should be a date
     string parsable by Time::ParseDate, it defaults to "now".
 
         my $date = date 'this friday';
 
+  date_epoch
     The date_epoch function returns an epoch string from a common date
     phrase, e.g. yesterday. The first argument should be a date string
     parsable by Time::ParseDate, it defaults to "now".
 
         my $date = date_epoch 'next friday';
 
+  date_format
     The date_format function returns a formatted date string from an epoch
     string and a Time::Format template. The first argument should be an
     epoch date string; the second argument should be a date format string
@@ -55,53 +59,63 @@ EXPORTS
 
         my $date = date_format time;
 
+  dump
     The dump function returns a representation of a Perl data structure.
 
         my $class = bless {}, 'main';
         say dump $class;
 
+  file
     The file function returns a Path::Tiny instance for operating on files.
 
         my $file  = file './customers.json';
         my $lines = $file->slurp;
 
+  find
     The find function traverses a directory and returns an arrayref of
     Path::Tiny objects matching the specified criteria.
 
         my $texts = find './documents', '*.txt';
 
+  here
     The here function returns a Path::Tiny instance for operating on the
     directory of the file the function is called from.
 
         my $dir = here;
         my @more = $dir->children;
 
+  home
     The home function returns a Path::Tiny instance for operating on the
     current user's home directory.
 
         my $dir = home;
         my @more = $dir->children;
 
+  load
     The load function uses Class::Load to require modules at runtime.
 
         my $class = load 'Test::Automata';
 
+  merge
     The merge function uses Hash::Merge::Simple to merge multi hash
     references into a single hash reference. Please view the
     Hash::Merge::Simple documentation for example usages.
 
         my $hash = merge $hash_a, $hash_b, $hash_c;
 
+  path
     The path function returns a Path::Tiny instance for operating on the
     directory specified.
 
         my $dir = path '/';
         my @more = $dir->children;
 
+  quote
     The quote function escapes double-quoted strings within the string.
 
         my $string = quote '"Ins\'t it a wonderful day"';
 
+  raise
     The raise function uses Bubblegum::Exception to throw a catchable
     exception. The raise function can also store arbitrary data that can be
     accessed by the trap.
@@ -109,27 +123,33 @@ EXPORTS
         raise 'business object not saved' => { obj => $business }
             if ! $business->id;
 
+  script
     The script function returns a Path::Tiny instance for operating on the
     script being executed.
 
+  unquote
     The unquote function unescapes double-quoted strings within the string.
 
         my $string = unquote '\"Ins\'t it a wonderful day\"';
 
+  user
     The user function returns the current user's username.
 
         my $nick = user;
 
+  user_info
     The user_info function returns an array reference of user information.
     This function is not currently portable and only works on *nix systems.
 
         my $info = user_info;
 
+  which
     The which function use File::Which to return a Path::Tiny instance for
     operating on the located executable program.
 
         my $mailer = which 'sendmail';
 
+  will
     The will function will construct and return a code reference from a
     string or set of strings belonging to a single unit of execution. This
     function exists to make creating tiny routines from strings easier. This
@@ -168,68 +188,4 @@ COPYRIGHT AND LICENSE
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 231:
-        Unknown directive: =function
-
-    Around line 239:
-        Unknown directive: =function
-
-    Around line 247:
-        Unknown directive: =function
-
-    Around line 255:
-        Unknown directive: =function
-
-    Around line 264:
-        Unknown directive: =function
-
-    Around line 271:
-        Unknown directive: =function
-
-    Around line 278:
-        Unknown directive: =function
-
-    Around line 285:
-        Unknown directive: =function
-
-    Around line 293:
-        Unknown directive: =function
-
-    Around line 301:
-        Unknown directive: =function
-
-    Around line 307:
-        Unknown directive: =function
-
-    Around line 315:
-        Unknown directive: =function
-
-    Around line 323:
-        Unknown directive: =function
-
-    Around line 329:
-        Unknown directive: =function
-
-    Around line 338:
-        Unknown directive: =function
-
-    Around line 343:
-        Unknown directive: =function
-
-    Around line 349:
-        Unknown directive: =function
-
-    Around line 355:
-        Unknown directive: =function
-
-    Around line 362:
-        Unknown directive: =function
-
-    Around line 369:
-        Unknown directive: =function
 

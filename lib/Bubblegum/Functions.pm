@@ -29,8 +29,7 @@ use Hash::Merge::Simple 'merge';
 
 use base 'Exporter::Tiny';
 
-our $VERSION = '0.01'; # VERSION
-
+our $VERSION = '0.02'; # VERSION
 
 
 our @EXPORT_OK = qw(
@@ -191,13 +190,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Bubblegum::Functions - Experimental Function Library for Bubblegum
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -222,13 +223,13 @@ Bubblegum::Functions is the standard function library for L<Bubblegum> with a
 focus on minimalism and data integrity. B<Note: This is an early release
 available for testing and feedback and as such is subject to change.>
 
-=head1 EXPORTS
-
 By default, no functions are exported when using this package, all functionality
 desired will need to be explicitly requested. The following are a list of
 functions available:
 
-=function cwd
+=head1 FUNCTIONS
+
+=head2 cwd
 
 The cwd function returns a L<Path::Tiny> instance for operating on the current
 working directory.
@@ -236,7 +237,7 @@ working directory.
     my $dir = cwd;
     my @more = $dir->children;
 
-=function date
+=head2 date
 
 The date function returns a L<DateTime::Tiny> instance from an epoch or common
 date phrase, e.g. yesterday. The first argument should be a date string parsable
@@ -244,7 +245,7 @@ by L<Time::ParseDate>, it defaults to C<now>.
 
     my $date = date 'this friday';
 
-=function date_epoch
+=head2 date_epoch
 
 The date_epoch function returns an epoch string from a common date phrase, e.g.
 yesterday. The first argument should be a date string parsable by
@@ -252,7 +253,7 @@ L<Time::ParseDate>, it defaults to C<now>.
 
     my $date = date_epoch 'next friday';
 
-=function date_format
+=head2 date_format
 
 The date_format function returns a formatted date string from an epoch string
 and a L<Time::Format> template. The first argument should be an epoch date
@@ -261,28 +262,28 @@ L<Time::Format>, it defaults to C<yyyy-mm-ddThh:mm:ss>.
 
     my $date = date_format time;
 
-=function dump
+=head2 dump
 
 The dump function returns a representation of a Perl data structure.
 
     my $class = bless {}, 'main';
     say dump $class;
 
-=function file
+=head2 file
 
 The file function returns a L<Path::Tiny> instance for operating on files.
 
     my $file  = file './customers.json';
     my $lines = $file->slurp;
 
-=function find
+=head2 find
 
 The find function traverses a directory and returns an arrayref of L<Path::Tiny>
 objects matching the specified criteria.
 
     my $texts = find './documents', '*.txt';
 
-=function here
+=head2 here
 
 The here function returns a L<Path::Tiny> instance for operating on the directory
 of the file the function is called from.
@@ -290,7 +291,7 @@ of the file the function is called from.
     my $dir = here;
     my @more = $dir->children;
 
-=function home
+=head2 home
 
 The home function returns a L<Path::Tiny> instance for operating on the current
 user's home directory.
@@ -298,13 +299,13 @@ user's home directory.
     my $dir = home;
     my @more = $dir->children;
 
-=function load
+=head2 load
 
 The load function uses L<Class::Load> to require modules at runtime.
 
     my $class = load 'Test::Automata';
 
-=function merge
+=head2 merge
 
 The merge function uses L<Hash::Merge::Simple> to merge multi hash references
 into a single hash reference. Please view the L<Hash::Merge::Simple>
@@ -312,7 +313,7 @@ documentation for example usages.
 
     my $hash = merge $hash_a, $hash_b, $hash_c;
 
-=function path
+=head2 path
 
 The path function returns a L<Path::Tiny> instance for operating on the
 directory specified.
@@ -320,13 +321,13 @@ directory specified.
     my $dir = path '/';
     my @more = $dir->children;
 
-=function quote
+=head2 quote
 
 The quote function escapes double-quoted strings within the string.
 
     my $string = quote '"Ins\'t it a wonderful day"';
 
-=function raise
+=head2 raise
 
 The raise function uses L<Bubblegum::Exception> to throw a catchable exception.
 The raise function can also store arbitrary data that can be accessed by the
@@ -335,38 +336,38 @@ trap.
     raise 'business object not saved' => { obj => $business }
         if ! $business->id;
 
-=function script
+=head2 script
 
 The script function returns a L<Path::Tiny> instance for operating on the script
 being executed.
 
-=function unquote
+=head2 unquote
 
 The unquote function unescapes double-quoted strings within the string.
 
     my $string = unquote '\"Ins\'t it a wonderful day\"';
 
-=function user
+=head2 user
 
 The user function returns the current user's username.
 
     my $nick = user;
 
-=function user_info
+=head2 user_info
 
 The user_info function returns an array reference of user information. This
 function is not currently portable and only works on *nix systems.
 
     my $info = user_info;
 
-=function which
+=head2 which
 
 The which function use L<File::Which> to return a L<Path::Tiny> instance for
 operating on the located executable program.
 
     my $mailer = which 'sendmail';
 
-=function will
+=head2 will
 
 The will function will construct and return a code reference from a string or
 set of strings belonging to a single unit of execution. This function exists to

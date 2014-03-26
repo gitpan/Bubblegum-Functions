@@ -31,7 +31,7 @@ requires:
   perl: v5.10.0
 resources:
   bugtracker: https://github.com/alnewkirk/Bubblegum-Functions/issues
-  homepage: https://github.com/alnewkirk/Bubblegum-Functions
+  homepage: http://metacpan.org/release/Bubblegum-Functions/
   repository: git://github.com/alnewkirk/Bubblegum-Functions.git
-version: 0.01
+version: 0.02
 x_authority: cpan:AWNCORP
