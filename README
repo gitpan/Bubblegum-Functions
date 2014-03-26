@@ -2,7 +2,7 @@ NAME
     Bubblegum::Functions - Experimental Function Library for Bubblegum
 
 VERSION
-    version 0.02
+    version 0.03
 
 SYNOPSIS
         package Server;

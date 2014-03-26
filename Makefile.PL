@@ -20,9 +20,8 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "Bubblegum::Functions",
-  "PREREQ_PM" => {},
-  "TEST_REQUIRES" => {
-    "Bubblegum" => "0.20",
+  "PREREQ_PM" => {
+    "Bubblegum" => "0.21",
     "Class::Load" => "0.21",
     "DateTime::Tiny" => "1.04",
     "Exporter::Tiny" => "0.036",
@@ -37,7 +36,8 @@ my %WriteMakefileArgs = (
     "Try::Tiny" => "0.19",
     "Type::Tiny" => "0.040"
   },
-  "VERSION" => "0.02",
+  "TEST_REQUIRES" => {},
+  "VERSION" => "0.03",
   "test" => {
     "TESTS" => "t/bubblegum/*.t"
   }
@@ -45,7 +45,7 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Bubblegum" => "0.20",
+  "Bubblegum" => "0.21",
   "Class::Load" => "0.21",
   "DateTime::Tiny" => "1.04",
   "Exporter::Tiny" => "0.036",

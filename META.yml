@@ -2,8 +2,18 @@
 abstract: 'Experimental Function Library for Bubblegum'
 author:
   - 'Al Newkirk <anewkirk@ana.io>'
-build_requires:
-  Bubblegum: 0.20
+build_requires: {}
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.013, CPAN::Meta::Converter version 2.132830'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Bubblegum-Functions
+requires:
+  Bubblegum: 0.21
   Class::Load: 0.21
   DateTime::Tiny: 1.04
   Exporter::Tiny: 0.036
@@ -18,20 +28,9 @@ build_requires:
   Try::Tiny: 0.19
   Type::Tiny: 0.040
   perl: v5.10.0
-configure_requires:
-  ExtUtils::MakeMaker: 6.30
-dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.013, CPAN::Meta::Converter version 2.132830'
-license: perl
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
-name: Bubblegum-Functions
-requires:
-  perl: v5.10.0
 resources:
   bugtracker: https://github.com/alnewkirk/Bubblegum-Functions/issues
   homepage: http://metacpan.org/release/Bubblegum-Functions/
   repository: git://github.com/alnewkirk/Bubblegum-Functions.git
-version: 0.02
+version: 0.03
 x_authority: cpan:AWNCORP

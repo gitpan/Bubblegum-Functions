@@ -1,6 +1,12 @@
 Changelog for Bubblegum-Functions
 
-0.02 2014-03-26T11:19:33
+0.03 2014-03-26T11:27:42
+ - Version bump and fixed dependency specification.
+
+0.02 2014-03-26T11:19:36
+ - v0.02
+   
+    - Miscellaneous cleanup and fixed POD errors.
  - Miscellaneous cleanup and fixed POD errors.
 
 0.01 2014-03-21T17:49:32
