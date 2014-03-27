@@ -1,6 +1,13 @@
 Changelog for Bubblegum-Functions
 
-0.03 2014-03-26T11:27:42
+0.04 2014-03-27T20:13:39
+ - Updated Makefile and README.
+ - Fixed operator precedence issue and other miscellaneous tweaking.
+
+0.03 2014-03-26T11:27:53
+ - v0.03
+   
+    - Version bump and fixed dependency specification.
  - Version bump and fixed dependency specification.
 
 0.02 2014-03-26T11:19:36

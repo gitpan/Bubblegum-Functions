@@ -29,8 +29,7 @@ use Hash::Merge::Simple 'merge';
 
 use base 'Exporter::Tiny';
 
-our $VERSION = '0.03'; # VERSION
-
+our $VERSION = '0.04'; # VERSION
 
 our @EXPORT_OK = qw(
     cwd
@@ -55,11 +54,9 @@ our @EXPORT_OK = qw(
     will
 );
 
-
 sub cwd {
     return Path::Tiny->cwd;
 }
-
 
 sub date {
     my $input = shift || 'now';
@@ -68,13 +65,11 @@ sub date {
     DateTime::Tiny->from_string($date);
 }
 
-
 sub date_epoch {
     my $input = shift || 'now';
     my $epoch = [Time::ParseDate::parsedate $input, @_];
-    return $epoch->[0] or undef;
+    return $epoch->first || undef;
 }
-
 
 sub date_format {
     my $epoch  = shift or return;
@@ -83,25 +78,21 @@ sub date_format {
     return Time::Format::time_format $format, $epoch;
 }
 
-
 sub dump {
     return Data::Dumper->new([shift])
         ->Indent(1)->Sortkeys(1)->Terse(1)->Dump
 }
 
-
 sub file {
     goto &path;
 }
 
-
 sub find {
-    my $spec = !$#_ ? '*.*' : pop;
+    my $spec = $_[-1] !~ /\*/ ? '*.*' : pop;
     my $path = path(@_);
     return [ map { path($_) }
         File::Find::Rule->file()->name($spec)->in($path) ];
 }
-
 
 sub here {
     return path(
@@ -111,24 +102,19 @@ sub here {
     );
 }
 
-
 sub home {
     my $user = $ENV{USER} // user();
     my $func = $user ? 'users_home' : 'my_home';
     return eval { path(File::HomeDir->can($func)->($user)) };
 }
 
-
 sub load {
     return Class::Load::load_class(@_);
 }
 
-
-
 sub path {
     return Path::Tiny::path(@_);
 }
-
 
 sub quote {
     my $string = shift;
@@ -137,18 +123,15 @@ sub quote {
     return qq{"$string"};
 }
 
-
 sub raise {
     my $class = 'Bubblegum::Exception';
     @_ = ($class, message => shift // $@, data => shift);
     goto $class->can('throw');
 }
 
-
 sub script {
     return file($0);
 }
-
 
 sub unquote {
     my $string = shift;
@@ -159,21 +142,17 @@ sub unquote {
     return $string;
 }
 
-
 sub user {
-    return user_info()->[0];
+    return user_info()->first;
 }
-
 
 sub user_info {
     return [eval '(getpwuid $>)'];
 }
 
-
 sub which {
     return path(File::Which::which(@_));
 }
-
 
 sub will {
     return eval
@@ -198,7 +177,7 @@ Bubblegum::Functions - Experimental Function Library for Bubblegum
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -397,6 +376,8 @@ will automatically be expanded and assigned data from the default array.
 
     # is equivalent to
     sub { my %a = @_; return keys %a; };
+
+=encoding utf8
 
 =head1 AUTHOR
 
